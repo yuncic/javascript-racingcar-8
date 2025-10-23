@@ -7,17 +7,17 @@ class Race {
     }
     playRound() {
     this.cars.forEach ((car) => {
-        const random = MissionUtils.Random.picNumberInRange(RANDOM.MIN,RANDOM.MAX);
+        const random = MissionUtils.Random.pickNumberInRange(RANDOM.MIN,RANDOM.MAX);
         if (random >= RANDOM.MOVE_CONDITION) {
             car.move();
         }
     });
 }
     getWinners() {
-        const MAX_POISTION = Math.max(...this.cars.map((car) => car.postion));
+        const MAX_POSITION = Math.max(...this.cars.map(car => car.position));
         return this.cars
-            .filter((car) => car.position === MAX_POISTION)
-            .map((car) => car.name);
+            .filter(car => car.position === MAX_POSITION)
+            .map(car => car.name);
   }
 }
 

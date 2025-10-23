@@ -15,18 +15,18 @@ class App {
       const tryCount = await InputView.readTryCount();
       VALIDATOR.validatortTryCount(tryCount);
 
-      const CARS = carNames.map((name) => new Car(name));
-      const RACE = new Race(CARS);
+      const cars = carNames.map((name) => new Car(name));
+      const race = new Race(cars);
 
       MissionUtils.Console.print(MESSAGES.RESULT);
 
       for (let i = 0; i < tryCount; i++) {
-        RACE.playRound();
-        OutPutView.PRINT_ROUND_RESULT(CARS);
+        race.playRound();
+        OutPutView.PRINT_ROUND_RESULT(cars);
       }
 
-      const WINNERS = RACE.getWinners();
-      OutPutView.PRINT_FINAL_WINNERS(WINNERS);
+      const winners = race.getWinners();
+      OutPutView.PRINT_FINAL_WINNERS(winners);
     } catch (error) {
       MissionUtils.Console.print(error.message);
       throw error;
