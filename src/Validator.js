@@ -1,4 +1,4 @@
-import { ERROR_MESSAGES } from "./Constants";
+import { ERROR_MESSAGES } from "./Constants.js";
 
 const VALIDATOR = {
     validatorCarNames(names) {
