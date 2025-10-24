@@ -10,7 +10,7 @@ export const ERROR_MESSAGES = {
     INVALID_TRY_COUNT: "[ERROR] 시도 횟수는 양의 정수여야 합니다"
 };
 
-export const RANDOM = {
+export const RACE_CONFIG = {
     MIN: 0,
     MAX: 9,
     MOVE_CONDITION: 4
