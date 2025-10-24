@@ -1,5 +1,5 @@
 import { MissionUtils } from "@woowacourse/mission-utils";
-import { MESSAGES, RANDOM } from "./Constants.js";
+import { MESSAGES } from "./Constants.js";
 
 const OutPutView = {
     PRINT_ROUND_RESULT(cars) {
