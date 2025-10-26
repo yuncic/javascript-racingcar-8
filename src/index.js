@@ -1,4 +1,9 @@
 import App from "./App.js";
+import { Console } from '@woowacourse/mission-utils';
 
-const app = new App();
-await app.run();
+try {
+    const app = new App();
+    await app.run();
+}catch (error) {
+}
+

@@ -75,7 +75,7 @@ describe("자동차 경주", () => {
 
     expect(logSpy).toHaveBeenCalledWith(expect.stringContaining("최종 우승자 : pobi, woni, yun"))
   }) 
-  
+
   test("공백 포함 이름 테스트", async () => {
     const inputs = ["   pobi,       yun","1"];
     const logSpy = getLogSpy();
