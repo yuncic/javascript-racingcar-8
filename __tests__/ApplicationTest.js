@@ -89,4 +89,32 @@ describe("자동차 경주", () => {
     expect(logSpy).toHaveBeenCalledWith(expect.stringContaining("pobi : -"));
     expect(logSpy).toHaveBeenCalledWith(expect.stringContaining("yun : "));
   })
+
+  test("예외 테스트" , async () => {
+    const inputs =[""];
+    mockQuestions(inputs);
+    
+    const app = new App();
+
+    await expect(app.run()).rejects.toThrow("[ERROR]");
+  })
+
+  test("여러 라운드 경주 테스트", async () => {
+    const inputs = ["pobi,woni","3"];
+    const logSpy = getLogSpy();
+
+    mockQuestions(inputs);
+    mockRandoms([4,4,3,3,5,5,4,3,2,4,4,3]);
+    // 1R: pobi +1, woni +1
+    // 2R: pobi +1, woni +1
+    // 3R: pobi +2, woni +2
+    // 4R: pobi +3, woni +2
+    // 5R: pobi +3, woni +3
+    // 5R: pobi +4, woni +3
+
+    const app = new App();
+    await app.run();
+
+    expect(logSpy).toHaveBeenCalledWith(expect.stringContaining("최종 우승자 : pobi"));
+  })
 });
