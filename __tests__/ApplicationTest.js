@@ -46,7 +46,7 @@ describe("자동차 경주", () => {
     });
   });
 
-  test("예외 테스트", async () => {
+  test("예외 테스트(이름 5글자 이상)", async () => {
 
     const inputs = ["pobi,javaji"];
     mockQuestions(inputs);
@@ -90,15 +90,6 @@ describe("자동차 경주", () => {
     expect(logSpy).toHaveBeenCalledWith(expect.stringContaining("yun : "));
   })
 
-  test("예외 테스트" , async () => {
-    const inputs =[""];
-    mockQuestions(inputs);
-    
-    const app = new App();
-
-    await expect(app.run()).rejects.toThrow("[ERROR]");
-  })
-
   test("여러 라운드 경주 테스트", async () => {
     const inputs = ["pobi,woni","3"];
     const logSpy = getLogSpy();
@@ -116,5 +107,23 @@ describe("자동차 경주", () => {
     await app.run();
 
     expect(logSpy).toHaveBeenCalledWith(expect.stringContaining("최종 우승자 : pobi"));
+  })
+
+  test("예외 테스트(입력값 X)" , async () => {
+    const inputs = [""];
+    mockQuestions(inputs);
+    
+    const app = new App();
+
+    await expect(app.run()).rejects.toThrow("[ERROR]");
+  })
+
+  test("에외 테스트(시도 횟수 음수)", async () => {
+    const inputs = ["pobi, woni","-1"];
+    mockQuestions(inputs);
+
+    const app = new App();
+    
+    await expect(app.run()).rejects.toThrow("[ERROR]")
   })
 });
