@@ -1,7 +1,7 @@
 import { MissionUtils } from "@woowacourse/mission-utils";
 import { MESSAGES } from "./Constants.js";
 
-const OutPutView = {
+const OutputView = {
     PRINT_ROUND_RESULT(cars) {
         cars.forEach((car) => {
             MissionUtils.Console.print(`${car.name} : ${car.getPositionMark()}`);
@@ -14,4 +14,4 @@ const OutPutView = {
     }
 };
 
-export default OutPutView;
+export default OutputView;

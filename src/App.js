@@ -1,10 +1,11 @@
 import InputView from "./InputView.js";
-import OutPutView from "./OutputView.js";
+import OutputView from "./OutputView.js";
 import VALIDATOR from "./Validator.js";
 import Car from "./Car.js"
 import Race from "./Race.js"
 import { MESSAGES } from "./Constants.js";
 import { MissionUtils } from "@woowacourse/mission-utils";
+
 
 
 class App {
@@ -13,7 +14,7 @@ class App {
       const carNames = await InputView.readCarNames();
       VALIDATOR.validatorCarNames(carNames);
       const tryCount = await InputView.readTryCount();
-      VALIDATOR.validatortTryCount(tryCount);
+      VALIDATOR.validatorTryCount(tryCount);
 
       const cars = carNames.map((name) => new Car(name));
       const race = new Race(cars);
@@ -22,11 +23,11 @@ class App {
 
       for (let i = 0; i < tryCount; i++) {
         race.playRound();
-        OutPutView.PRINT_ROUND_RESULT(cars);
+        OutputView.PRINT_ROUND_RESULT(cars);
       }
 
       const winners = race.getWinners();
-      OutPutView.PRINT_FINAL_WINNERS(winners);
+      OutputView.PRINT_FINAL_WINNERS(winners);
     } catch (error) {
       MissionUtils.Console.print(error.message);
       throw error;

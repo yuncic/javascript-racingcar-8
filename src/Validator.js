@@ -6,7 +6,7 @@ const VALIDATOR = {
             throw new Error(ERROR_MESSAGES.INVALID_NAME)
         }
     },
-    validatortTryCount(count) {
+    validatorTryCount(count) {
         if (isNaN(count) || Number(count) <= 0) {
             throw new Error(ERROR_MESSAGES.INVALID_TRY_COUNT)
         }

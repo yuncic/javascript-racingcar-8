@@ -74,14 +74,14 @@ describe("자동차 경주", () => {
     await app.run();
 
     expect(logSpy).toHaveBeenCalledWith(expect.stringContaining("최종 우승자 : pobi, woni, yun"))
-  }) 
+  })
 
   test("공백 포함 이름 테스트", async () => {
-    const inputs = ["   pobi,       yun","1"];
+    const inputs = ["   pobi,       yun", "1"];
     const logSpy = getLogSpy();
 
     mockQuestions(inputs);
-    mockRandoms([4,3])
+    mockRandoms([4, 3])
 
     const app = new App();
     await app.run();
@@ -91,11 +91,11 @@ describe("자동차 경주", () => {
   })
 
   test("여러 라운드 경주 테스트", async () => {
-    const inputs = ["pobi,woni","3"];
+    const inputs = ["pobi,woni", "3"];
     const logSpy = getLogSpy();
 
     mockQuestions(inputs);
-    mockRandoms([4,4,3,3,5,5,4,3,2,4,4,3]);
+    mockRandoms([4, 4, 3, 3, 5, 5, 4, 3, 2, 4, 4, 3]);
     // 1R: pobi +1, woni +1
     // 2R: pobi +1, woni +1
     // 3R: pobi +2, woni +2
@@ -109,21 +109,21 @@ describe("자동차 경주", () => {
     expect(logSpy).toHaveBeenCalledWith(expect.stringContaining("최종 우승자 : pobi"));
   })
 
-  test("예외 테스트(입력값 X)" , async () => {
+  test("예외 테스트(입력값 X)", async () => {
     const inputs = [""];
     mockQuestions(inputs);
-    
+
     const app = new App();
 
     await expect(app.run()).rejects.toThrow("[ERROR]");
   })
 
   test("에외 테스트(시도 횟수 음수)", async () => {
-    const inputs = ["pobi, woni","-1"];
+    const inputs = ["pobi, woni", "-1"];
     mockQuestions(inputs);
 
     const app = new App();
-    
+
     await expect(app.run()).rejects.toThrow("[ERROR]")
   })
 });
