@@ -109,6 +109,19 @@ describe("자동차 경주", () => {
     expect(logSpy).toHaveBeenCalledWith(expect.stringContaining("최종 우승자 : pobi"));
   })
 
+  test("전진이 없을 때", async () => {
+    const inputs = ["pobi, jun, woni","4"];
+    const logSpy = getLogSpy();
+
+    mockQuestions(inputs);
+    mockRandoms([1,1,2,2,3,3,3,3]);
+
+    const app = new App();
+    await app.run();
+
+    expect(logSpy).toHaveBeenCalledWith(expect.stringContaining("최종 우승자 :"))
+  })
+
   test("예외 테스트(입력값 X)", async () => {
     const inputs = [""];
     mockQuestions(inputs);
