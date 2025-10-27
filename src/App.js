@@ -23,11 +23,11 @@ class App {
 
       for (let i = 0; i < tryCount; i++) {
         race.playRound();
-        OutputView.PRINT_ROUND_RESULT(cars);
+        OutputView.PrintRoundResult(cars);
       }
 
       const winners = race.getWinners();
-      OutputView.PRINT_FINAL_WINNERS(winners);
+      OutputView.PrintFinalWinners(winners);
     } catch (error) {
       MissionUtils.Console.print(error.message);
       throw error;
